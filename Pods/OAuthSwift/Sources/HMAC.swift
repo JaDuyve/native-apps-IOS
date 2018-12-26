@@ -43,7 +43,7 @@ open class HMAC {
 }
 
 extension HMAC: OAuthSwiftSignatureDelegate {
-    public static func sign(hashMethod: OAuthSwiftHashMethod, key: Data, message: Data) -> Data? {
+    open static func sign(hashMethod: OAuthSwiftHashMethod, key: Data, message: Data) -> Data? {
         switch hashMethod {
         case .sha1:
             return sha1(key: key, message: message)

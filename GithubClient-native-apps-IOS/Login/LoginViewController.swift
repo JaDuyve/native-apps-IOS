@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
             state: "",
             success: { (credential, response, parameters) in
                 
-                print(credential.oauthToken)
+            print(credential.oauthToken)
         },
             failure:  {error in
                 self.presentAlert("Error", message: error.localizedDescription)
