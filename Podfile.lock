@@ -1,0 +1,60 @@
+PODS:
+  - AeroGearHttp (2.0.0)
+  - AeroGearOAuth2 (2.0.0):
+    - AeroGearHttp (= 2.0.0)
+  - BaseAPI (0.1.2)
+  - GithubAPI (0.0.6):
+    - BaseAPI
+  - OAuthSwift (1.2.2)
+  - Realm (3.13.0):
+    - Realm/Headers (= 3.13.0)
+  - Realm/Headers (3.13.0)
+  - RealmSwift (3.13.0):
+    - Realm (= 3.13.0)
+  - Siesta/Core (1.4.2)
+  - Siesta/UI (1.4.2):
+    - Siesta/Core
+  - SwiftKeychainWrapper (3.0.1)
+
+DEPENDENCIES:
+  - AeroGearOAuth2
+  - GithubAPI
+  - OAuthSwift (from `https://github.com/OAuthSwift/OAuthSwift.git`)
+  - RealmSwift
+  - Siesta/UI (~> 1.0)
+  - SwiftKeychainWrapper (~> 3.0.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AeroGearHttp
+    - AeroGearOAuth2
+    - BaseAPI
+    - GithubAPI
+    - Realm
+    - RealmSwift
+    - Siesta
+    - SwiftKeychainWrapper
+
+EXTERNAL SOURCES:
+  OAuthSwift:
+    :git: https://github.com/OAuthSwift/OAuthSwift.git
+
+CHECKOUT OPTIONS:
+  OAuthSwift:
+    :commit: f8d4f3199a89e92811acc6238c96f812c013513e
+    :git: https://github.com/OAuthSwift/OAuthSwift.git
+
+SPEC CHECKSUMS:
+  AeroGearHttp: 65bf374aefd3521e1d8d33547e4db96047b745aa
+  AeroGearOAuth2: 759cd8f9a8bc0395021d21724cc8f8d0fac34eb6
+  BaseAPI: e234e06c832a85154f34f09d6b626364059b1638
+  GithubAPI: bc5bfd90489f5138a8d1e00003b18abe31579eb0
+  OAuthSwift: b31b11a675e3ddde5ffa0640daac4c209985b57b
+  Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
+  RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
+  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+
+PODFILE CHECKSUM: 6bbcb9d016ea841d7839adec69de11688b7a8dfd
+
+COCOAPODS: 1.5.3
