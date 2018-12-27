@@ -1,52 +1,65 @@
 PODS:
-  - AeroGearHttp (2.0.0)
-  - AeroGearOAuth2 (2.0.0):
-    - AeroGearHttp (= 2.0.0)
+  - Alamofire (4.0.1)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
   - BaseAPI (0.1.2)
+  - Dip (7.0.1)
   - GithubAPI (0.0.6):
     - BaseAPI
-  - OAuthSwift (1.2.2)
+  - ObjectMapper (2.2.9)
+  - p2.OAuth2 (4.0.1)
   - Realm (3.13.0):
     - Realm/Headers (= 3.13.0)
   - Realm/Headers (3.13.0)
   - RealmSwift (3.13.0):
     - Realm (= 3.13.0)
-  - Siesta/Core (1.4.2)
-  - Siesta/UI (1.4.2):
-    - Siesta/Core
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
-  - AeroGearOAuth2
+  - Alamofire (~> 4.0.0)
+  - AlamofireObjectMapper (~> 4.0)
+  - Dip
   - GithubAPI
-  - OAuthSwift (~> 1.2.0)
+  - p2.OAuth2 (from `https://github.com/p2/OAuth2`)
   - RealmSwift
-  - Siesta/UI (~> 1.0)
   - SwiftKeychainWrapper (~> 3.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AeroGearHttp
-    - AeroGearOAuth2
+    - Alamofire
+    - AlamofireObjectMapper
     - BaseAPI
+    - Dip
     - GithubAPI
-    - OAuthSwift
+    - ObjectMapper
     - Realm
     - RealmSwift
-    - Siesta
     - SwiftKeychainWrapper
 
+EXTERNAL SOURCES:
+  p2.OAuth2:
+    :git: https://github.com/p2/OAuth2
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  p2.OAuth2:
+    :commit: e81b4bc4a3cfc3d11b62aba07241ceeb0684ac07
+    :git: https://github.com/p2/OAuth2
+    :submodules: true
+
 SPEC CHECKSUMS:
-  AeroGearHttp: 65bf374aefd3521e1d8d33547e4db96047b745aa
-  AeroGearOAuth2: 759cd8f9a8bc0395021d21724cc8f8d0fac34eb6
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   BaseAPI: e234e06c832a85154f34f09d6b626364059b1638
+  Dip: 79509d5dc4f648e10e922ed79c608a7761c52b13
   GithubAPI: bc5bfd90489f5138a8d1e00003b18abe31579eb0
-  OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
+  ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
+  p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
-  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 89d2519dba19d41ed9544c6e12c16841dce03d26
+PODFILE CHECKSUM: 8fa574796b5f531021e31678f7bd305898eded51
 
 COCOAPODS: 1.5.3
