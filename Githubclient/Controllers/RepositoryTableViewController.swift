@@ -6,4 +6,13 @@
 //  Copyright © 2018 Jari Duyvejonck. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Siesta
+
+class RepositoryTableViewController: UITableViewController, ResourceObserver {
+    
+    
+    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        <#code#>
+    }
+}

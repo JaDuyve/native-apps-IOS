@@ -6,4 +6,10 @@
 //  Copyright © 2018 Jari Duyvejonck. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Siesta
+
+enum Theme {
+    
+    
+}

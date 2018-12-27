@@ -14,6 +14,9 @@ PODS:
   - Realm/Headers (3.13.0)
   - RealmSwift (3.13.0):
     - Realm (= 3.13.0)
+  - Siesta/Core (1.4.2)
+  - Siesta/UI (1.4.2):
+    - Siesta/Core
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -23,6 +26,7 @@ DEPENDENCIES:
   - GithubAPI
   - p2.OAuth2 (from `https://github.com/p2/OAuth2`)
   - RealmSwift
+  - Siesta/UI (~> 1.0)
   - SwiftKeychainWrapper (~> 3.0.1)
 
 SPEC REPOS:
@@ -35,6 +39,7 @@ SPEC REPOS:
     - ObjectMapper
     - Realm
     - RealmSwift
+    - Siesta
     - SwiftKeychainWrapper
 
 EXTERNAL SOURCES:
@@ -58,8 +63,9 @@ SPEC CHECKSUMS:
   p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
+  Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 8fa574796b5f531021e31678f7bd305898eded51
+PODFILE CHECKSUM: 58599431fbcdc315bf1930b962dd57b62f4cbdf8
 
 COCOAPODS: 1.5.3

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E0A6C8F0A8D5AD12EFE424E /* Pods_GithubclientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEAB8C3DB018C7A887BE5C32 /* Pods_GithubclientUITests.framework */; };
 		40BB1373B59DB4D863089703 /* Pods_Githubclient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107990D48E570E39664C815 /* Pods_Githubclient.framework */; };
+		5069E95021D56EB500071399 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E94F21D56EB500071399 /* APIService.swift */; };
+		5069E95421D5771A00071399 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95321D5771A00071399 /* ColorTheme.swift */; };
+		5069E95721D5797200071399 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95621D5797200071399 /* UserViewController.swift */; };
+		5069E95921D57D4900071399 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95821D57D4900071399 /* RepositoryTableViewController.swift */; };
 		50A0371D21D4464100D36251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371C21D4464100D36251 /* User.swift */; };
 		50A0371F21D4553800D36251 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371E21D4553800D36251 /* Repository.swift */; };
 		50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */; };
@@ -42,6 +46,10 @@
 		0A5C6046894AA6FB5DB58361 /* Pods-Githubclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-Githubclient/Pods-Githubclient.release.xcconfig"; sourceTree = "<group>"; };
 		2107990D48E570E39664C815 /* Pods_Githubclient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Githubclient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADF60882DA993F0128EEF12 /* Pods-GithubclientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubclientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubclientTests/Pods-GithubclientTests.release.xcconfig"; sourceTree = "<group>"; };
+		5069E94F21D56EB500071399 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		5069E95321D5771A00071399 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		5069E95621D5797200071399 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		5069E95821D57D4900071399 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
 		50A0371C21D4464100D36251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50A0371E21D4553800D36251 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		50EBBA8C21D42E8F0074B699 /* Githubclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +161,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5069E95121D576D700071399 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5069E95321D5771A00071399 /* ColorTheme.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5069E95221D576E800071399 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5069E95521D5796000071399 /* UserViewController */,
+				50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */,
+				50A0371A21D4383800D36251 /* Login */,
+				5069E95821D57D4900071399 /* RepositoryTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5069E95521D5796000071399 /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5069E95621D5797200071399 /* UserViewController.swift */,
+			);
+			path = UserViewController;
+			sourceTree = "<group>";
+		};
 		50A0371A21D4383800D36251 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +211,7 @@
 				5069E94E21D5217400071399 /* Model */,
 				5069E94D21D5216900071399 /* Context */,
 				5069E94C21D5215E00071399 /* Extensions */,
+				5069E94F21D56EB500071399 /* APIService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -205,11 +241,11 @@
 		50EBBA8E21D42E8F0074B699 /* Githubclient */ = {
 			isa = PBXGroup;
 			children = (
+				5069E95221D576E800071399 /* Controllers */,
+				5069E95121D576D700071399 /* UI */,
 				5069E94921D520E900071399 /* Realm */,
 				5069E94721D5209A00071399 /* Domain */,
 				50A0372021D45A6200D36251 /* API */,
-				50A0371A21D4383800D36251 /* Login */,
-				50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */,
 				50EBBA9321D42E8F0074B699 /* Main.storyboard */,
 				50EBBA9621D42E900074B699 /* Assets.xcassets */,
 				50EBBA9821D42E900074B699 /* LaunchScreen.storyboard */,
@@ -429,6 +465,7 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework",
 			);
@@ -444,6 +481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/p2_OAuth2.framework",
 			);
@@ -503,8 +541,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5069E95721D5797200071399 /* UserViewController.swift in Sources */,
 				50EBBA9221D42E8F0074B699 /* LoginViewController.swift in Sources */,
+				5069E95021D56EB500071399 /* APIService.swift in Sources */,
 				50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */,
+				5069E95421D5771A00071399 /* ColorTheme.swift in Sources */,
+				5069E95921D57D4900071399 /* RepositoryTableViewController.swift in Sources */,
 				50A0371D21D4464100D36251 /* User.swift in Sources */,
 				50A0371F21D4553800D36251 /* Repository.swift in Sources */,
 			);

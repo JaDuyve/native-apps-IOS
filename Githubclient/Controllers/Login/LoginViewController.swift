@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
         oauth2.authorize() {
             authParameters, error in
             
-            if let params = authParameters {
-                
+            if authParameters != nil {
+                self.saveToken(token: self.oauth2.accessToken)
             }
             else {
                 
@@ -53,8 +53,12 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func saveToken(token: String) {
-        let saveSuccessful: Bool = KeychainWrapper.standard.set(token, forKey: "githubclient_token")
+    private func saveToken(token: String?) {
+        guard let newToken = token else {
+            return
+        }
+        
+        let saveSuccessful: Bool = KeychainWrapper.standard.set(newToken, forKey: "githubclient_token")
         let storage = HTTPCookieStorage.shared
         
         if !saveSuccessful {
@@ -64,6 +68,8 @@ class LoginViewController: UIViewController {
                 storage.deleteCookie($0)
             }
         }
+        
+        
     }
     
 }

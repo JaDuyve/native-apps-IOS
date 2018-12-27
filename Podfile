@@ -13,7 +13,8 @@ target 'Githubclient' do
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'Dip'
   pod 'p2.OAuth2', :git => 'https://github.com/p2/OAuth2', :submodules => true
-
+  pod 'Siesta/UI', '~> 1.0'
+  
   target 'GithubclientTests' do
     inherit! :search_paths
     # Pods for testing
