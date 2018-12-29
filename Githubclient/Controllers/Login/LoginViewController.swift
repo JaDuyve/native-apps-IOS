@@ -26,10 +26,16 @@ class LoginViewController: UIViewController {
         
         ] as OAuth2JSON)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+    
+        super.viewDidAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if KeychainWrapper.standard.string(forKey: "githubclient_token") != nil  {
+            performSegue(withIdentifier: "show_user_profile", sender: nil)
+        }
     }
+    
     
     @IBAction func login(_ sender: UIButton) {
         if oauth2.isAuthorizing {
@@ -69,7 +75,6 @@ class LoginViewController: UIViewController {
             }
         }
         
-        print("test")
         
         performSegue(withIdentifier: "show_user_profile", sender: nil)
         

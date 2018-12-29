@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/jariduyvejonck/Documents/hogent_3jaar/ios_dev/new_project_version/native-apps-IOS/Githubclient/UI/images.xcassets">
+   </FileRef>
+   <FileRef
       location = "group:Githubclient.xcodeproj">
    </FileRef>
    <FileRef

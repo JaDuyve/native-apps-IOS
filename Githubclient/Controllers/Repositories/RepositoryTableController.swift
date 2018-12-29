@@ -88,6 +88,16 @@ class RepositoryTableController: UITableViewController, ResourceObserver {
         repositories = repositoriesResource?.typedContent() ?? []
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "show_detail_repository" {
+            if let repositoryVC = segue.destination as? RepositoryDetailedViewController,
+                let cell = sender as? RepositoryTableCell {
+                
+                repositoryVC.repository = cell.repository
+            }
+        }
+    }
 }
 
 
@@ -96,17 +106,26 @@ class RepositoryTableCell: UITableViewCell {
     @IBOutlet weak var repoOwnerAvatar: RemoteImageView!
     @IBOutlet weak var repoName: UILabel!
     @IBOutlet weak var language: UILabel!
-    @IBOutlet weak var repoDescription: UILabel!
-    
+    @IBOutlet weak var stars: UILabel!
+    @IBOutlet weak var forks: UILabel!
+    @IBOutlet weak var owner: UILabel!
+    @IBOutlet weak var descriptionRepo: UILabel!
     
     var repository: Repository? {
         didSet {
-            print(repository)
-            
             
             repoName.text = repository?.name
             language.text = repository?.language
-            repoDescription.text = repository?.descriptionRepo
+            descriptionRepo.text = repository?.descriptionRepo
+            owner.text = repository?.owner.login
+            
+            if let starsCount = repository?.stargazersCount {
+                stars.text = String(starsCount)
+           }
+
+            if let forkCount = repository?.forksCount {
+                forks.text = String(forkCount)
+            }
             
             if let avatarUrl = repository?.owner.avatarUrl {
                 repoOwnerAvatar.imageURL = avatarUrl

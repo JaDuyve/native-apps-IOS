@@ -14,12 +14,14 @@
 		5069E95721D5797200071399 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95621D5797200071399 /* UserViewController.swift */; };
 		5069E95921D57D4900071399 /* RepositoryNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95821D57D4900071399 /* RepositoryNavController.swift */; };
 		5069E95E21D6C9E200071399 /* RepositoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95D21D6C9E200071399 /* RepositoryTableController.swift */; };
+		5069E96221D80F7700071399 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5069E96121D80F7700071399 /* FontAwesome.ttf */; };
+		5069E96621D8306400071399 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96521D8306400071399 /* RepositoryDetailViewController.swift */; };
+		5069E96821D839AA00071399 /* FileStructureRepoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */; };
 		50A0371D21D4464100D36251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371C21D4464100D36251 /* User.swift */; };
 		50A0371F21D4553800D36251 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371E21D4553800D36251 /* Repository.swift */; };
 		50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */; };
 		50EBBA9221D42E8F0074B699 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBA9121D42E8F0074B699 /* LoginViewController.swift */; };
 		50EBBA9521D42E8F0074B699 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50EBBA9321D42E8F0074B699 /* Main.storyboard */; };
-		50EBBA9721D42E900074B699 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50EBBA9621D42E900074B699 /* Assets.xcassets */; };
 		50EBBA9A21D42E900074B699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50EBBA9821D42E900074B699 /* LaunchScreen.storyboard */; };
 		50EBBAA521D42E900074B699 /* GithubclientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBAA421D42E900074B699 /* GithubclientTests.swift */; };
 		50EBBAB021D42E900074B699 /* GithubclientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBAAF21D42E900074B699 /* GithubclientUITests.swift */; };
@@ -52,13 +54,16 @@
 		5069E95621D5797200071399 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		5069E95821D57D4900071399 /* RepositoryNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNavController.swift; sourceTree = "<group>"; };
 		5069E95D21D6C9E200071399 /* RepositoryTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableController.swift; sourceTree = "<group>"; };
+		5069E96121D80F7700071399 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		5069E96421D8177200071399 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = "/Users/jariduyvejonck/Documents/hogent_3jaar/ios_dev/new_project_version/native-apps-IOS/Githubclient/UI/images.xcassets"; sourceTree = "<absolute>"; };
+		5069E96521D8306400071399 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
+		5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStructureRepoTableController.swift; sourceTree = "<group>"; };
 		50A0371C21D4464100D36251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50A0371E21D4553800D36251 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		50EBBA8C21D42E8F0074B699 /* Githubclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50EBBA9121D42E8F0074B699 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		50EBBA9421D42E8F0074B699 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		50EBBA9621D42E900074B699 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50EBBA9921D42E900074B699 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50EBBA9B21D42E900074B699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50EBBAA021D42E900074B699 /* GithubclientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubclientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +119,8 @@
 		5069E95121D576D700071399 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5069E96421D8177200071399 /* images.xcassets */,
+				5069E96121D80F7700071399 /* FontAwesome.ttf */,
 				5069E95321D5771A00071399 /* ColorTheme.swift */,
 			);
 			path = UI;
@@ -143,6 +150,8 @@
 			children = (
 				5069E95821D57D4900071399 /* RepositoryNavController.swift */,
 				5069E95D21D6C9E200071399 /* RepositoryTableController.swift */,
+				5069E96521D8306400071399 /* RepositoryDetailViewController.swift */,
+				5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -202,7 +211,6 @@
 				5069E94721D5209A00071399 /* Domain */,
 				50A0372021D45A6200D36251 /* API */,
 				50EBBA9321D42E8F0074B699 /* Main.storyboard */,
-				50EBBA9621D42E900074B699 /* Assets.xcassets */,
 				50EBBA9821D42E900074B699 /* LaunchScreen.storyboard */,
 				50EBBA9B21D42E900074B699 /* Info.plist */,
 			);
@@ -359,8 +367,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50EBBA9A21D42E900074B699 /* LaunchScreen.storyboard in Resources */,
-				50EBBA9721D42E900074B699 /* Assets.xcassets in Resources */,
 				50EBBA9521D42E8F0074B699 /* Main.storyboard in Resources */,
+				5069E96221D80F7700071399 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +500,9 @@
 				5069E95421D5771A00071399 /* ColorTheme.swift in Sources */,
 				5069E95921D57D4900071399 /* RepositoryNavController.swift in Sources */,
 				50A0371D21D4464100D36251 /* User.swift in Sources */,
+				5069E96821D839AA00071399 /* FileStructureRepoTableController.swift in Sources */,
 				50A0371F21D4553800D36251 /* Repository.swift in Sources */,
+				5069E96621D8306400071399 /* RepositoryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
