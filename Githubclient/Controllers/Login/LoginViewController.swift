@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let saveSuccessful: Bool = KeychainWrapper.standard.set(newToken, forKey: "githubclient_token")
+        let saveSuccessful: Bool = KeychainWrapper.standard.set("Bearer \(newToken)", forKey: "githubclient_token")
         let storage = HTTPCookieStorage.shared
         
         if !saveSuccessful {
@@ -68,6 +68,10 @@ class LoginViewController: UIViewController {
                 storage.deleteCookie($0)
             }
         }
+        
+        print("test")
+        
+        performSegue(withIdentifier: "show_user_profile", sender: nil)
         
         
     }

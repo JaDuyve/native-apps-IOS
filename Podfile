@@ -7,11 +7,8 @@ target 'Githubclient' do
 
   # Pods for Githubclient
   pod 'RealmSwift'
-  pod 'GithubAPI'
   pod 'SwiftKeychainWrapper', '~>3.0.1'
-  pod 'Alamofire', '~> 4.0.0'
-  pod 'AlamofireObjectMapper', '~> 4.0'
-  pod 'Dip'
+  
   pod 'p2.OAuth2', :git => 'https://github.com/p2/OAuth2', :submodules => true
   pod 'Siesta/UI', '~> 1.0'
   

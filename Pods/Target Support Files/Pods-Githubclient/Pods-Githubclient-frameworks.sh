@@ -143,12 +143,6 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BaseAPI/BaseAPI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Dip/Dip.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GithubAPI/GithubAPI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework"
@@ -156,12 +150,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BaseAPI/BaseAPI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Dip/Dip.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/GithubAPI/GithubAPI.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework"

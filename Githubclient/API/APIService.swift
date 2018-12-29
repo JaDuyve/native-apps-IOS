@@ -20,14 +20,49 @@ class _APIService {
     
     fileprivate init() {
         
+        #if DEBUG
+        // Bare-bones logging of which network calls Siesta makes:
+        SiestaLog.Category.enabled = .detailed
+        
+        // For more info about how Siesta decides whether to make a network call,
+        // and which state updates it broadcasts to the app:
+        
+        //SiestaLog.Category.enabled = .common
+        
+        // For the gory details of what Siesta’s up to:
+        
+        //SiestaLog.Category.enabled = .detailed
+        
+        // To dump all requests and responses:
+        // (Warning: may cause Xcode console overheating)
+        
+        //SiestaLog.Category.enabled = .all
+        #endif
         
         let jsonDecoder = JSONDecoder()
+        
+        
+        service.configure {
+            
+            $0.pipeline[.cleanup].add(
+                GitHubErrorMessageExtractor(jsonDecoder: jsonDecoder))
+        }
+        
+        
         
         if let token = KeychainWrapper.standard.string(forKey: "githubclient_token")  {
             service.configure("**") {
                 
                 $0.headers["Authorization"] = token
             }
+        }
+        
+        
+        
+        service.configureTransformer("/user") {
+            // Decode json to User object
+            
+            try jsonDecoder.decode(User.self, from: $0.content)
         }
         
         service.configureTransformer("/users/*") {
@@ -37,6 +72,16 @@ class _APIService {
         
         service.configureTransformer("/users/*/repos") {
             // Decode json to array of Repository Objcts
+            try jsonDecoder.decode([Repository].self, from: $0.content)
+        }
+        
+        service.configureTransformer("/users/*/subscriptions") {
+            // Decode json to array of Repository Objects
+            try jsonDecoder.decode([Repository].self, from: $0.content)
+        }
+        
+        service.configureTransformer("/users/*/starred/repo") {
+            // Decode json to array of Repository Objects
             try jsonDecoder.decode([Repository].self, from: $0.content)
         }
     }
@@ -49,16 +94,50 @@ class _APIService {
     
     // -------------------- API CALLS ----------------------
     
-    func user(_ username: String) -> Resource {
+    var user: Resource {
+        return service
+            .resource("/user")
+    }
+    
+    func users(_ username: String) -> Resource {
         return service
             .resource("/users")
             .child(username.lowercased())
     }
     
-    func repository(owner username: String, repositoryName name: String) -> Resource {
+    func repositories(owner username: String) -> Resource {
         return service
-            .resource("/repos")
-            .child(username)
-            .child(name)
+            .resource("/users/\(username)/repos")
+    }
+    
+    func repositoriesSubscription(owner username: String) -> Resource {
+        return service
+            .resource("/users/\(username)/subscriptions")
+    }
+    
+    func repositoriesStarred(owner username: String) -> Resource {
+        return service
+            .resource("/users/\(username)/starred/repos")
+    }
+    
+    private struct GitHubErrorMessageExtractor: ResponseTransformer {
+        let jsonDecoder: JSONDecoder
+        
+        func process(_ response: Response) -> Response {
+            guard case .failure(var error) = response,     // Unless the response is a failure...
+                let errorData: Data = error.typedContent(),  // ...with data...
+                let githubError = try? jsonDecoder.decode(   // ...that encodes a standard GitHub error envelope...
+                    GitHubErrorEnvelope.self, from: errorData)
+                else {
+                    return response                              // ...just leave it untouched.
+            }
+            
+            error.userMessage = githubError.message        // GitHub provided an error message. Show it to the user!
+            return .failure(error)
+        }
+        
+        private struct GitHubErrorEnvelope: Decodable {
+            let message: String
+        }
     }
 }

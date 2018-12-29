@@ -13,11 +13,11 @@ struct User: Codable {
     let avatarUrl: String
     let followersUrl: String
     let followingUrl: String
-    let followers: Int
-    let following: Int
-    let publicRepos: Int
+    let followers: Int?
+    let following: Int?
+    let publicRepos: Int?
     let reposUrl: String
-    let subscriptionUrl: String
+    let subscriptionsUrl: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,7 +29,7 @@ struct User: Codable {
         case following
         case publicRepos = "public_repos"
         case reposUrl = "repos_url"
-        case subscriptionUrl = "subscription_url"
+        case subscriptionsUrl = "subscriptions_url"
     }
 }
 

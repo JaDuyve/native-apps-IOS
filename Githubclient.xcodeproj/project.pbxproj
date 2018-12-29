@@ -12,7 +12,8 @@
 		5069E95021D56EB500071399 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E94F21D56EB500071399 /* APIService.swift */; };
 		5069E95421D5771A00071399 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95321D5771A00071399 /* ColorTheme.swift */; };
 		5069E95721D5797200071399 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95621D5797200071399 /* UserViewController.swift */; };
-		5069E95921D57D4900071399 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95821D57D4900071399 /* RepositoryTableViewController.swift */; };
+		5069E95921D57D4900071399 /* RepositoryNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95821D57D4900071399 /* RepositoryNavController.swift */; };
+		5069E95E21D6C9E200071399 /* RepositoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95D21D6C9E200071399 /* RepositoryTableController.swift */; };
 		50A0371D21D4464100D36251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371C21D4464100D36251 /* User.swift */; };
 		50A0371F21D4553800D36251 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371E21D4553800D36251 /* Repository.swift */; };
 		50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */; };
@@ -49,7 +50,8 @@
 		5069E94F21D56EB500071399 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5069E95321D5771A00071399 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		5069E95621D5797200071399 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		5069E95821D57D4900071399 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		5069E95821D57D4900071399 /* RepositoryNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNavController.swift; sourceTree = "<group>"; };
+		5069E95D21D6C9E200071399 /* RepositoryTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableController.swift; sourceTree = "<group>"; };
 		50A0371C21D4464100D36251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50A0371E21D4553800D36251 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		50EBBA8C21D42E8F0074B699 /* Githubclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,61 +106,9 @@
 		5069E94721D5209A00071399 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				5069E94821D520AC00071399 /* Services */,
 				50A0371B21D4463100D36251 /* Model */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		5069E94821D520AC00071399 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		5069E94921D520E900071399 /* Realm */ = {
-			isa = PBXGroup;
-			children = (
-				5069E94B21D5210000071399 /* Services */,
-				5069E94A21D520F700071399 /* Model */,
-			);
-			path = Realm;
-			sourceTree = "<group>";
-		};
-		5069E94A21D520F700071399 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5069E94B21D5210000071399 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		5069E94C21D5215E00071399 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		5069E94D21D5216900071399 /* Context */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Context;
-			sourceTree = "<group>";
-		};
-		5069E94E21D5217400071399 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		5069E95121D576D700071399 /* UI */ = {
@@ -172,10 +122,10 @@
 		5069E95221D576E800071399 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5069E95C21D6C9BB00071399 /* Repositories */,
 				5069E95521D5796000071399 /* UserViewController */,
 				50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */,
 				50A0371A21D4383800D36251 /* Login */,
-				5069E95821D57D4900071399 /* RepositoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +136,15 @@
 				5069E95621D5797200071399 /* UserViewController.swift */,
 			);
 			path = UserViewController;
+			sourceTree = "<group>";
+		};
+		5069E95C21D6C9BB00071399 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5069E95821D57D4900071399 /* RepositoryNavController.swift */,
+				5069E95D21D6C9E200071399 /* RepositoryTableController.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		50A0371A21D4383800D36251 /* Login */ = {
@@ -208,9 +167,6 @@
 		50A0372021D45A6200D36251 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				5069E94E21D5217400071399 /* Model */,
-				5069E94D21D5216900071399 /* Context */,
-				5069E94C21D5215E00071399 /* Extensions */,
 				5069E94F21D56EB500071399 /* APIService.swift */,
 			);
 			path = API;
@@ -243,7 +199,6 @@
 			children = (
 				5069E95221D576E800071399 /* Controllers */,
 				5069E95121D576D700071399 /* UI */,
-				5069E94921D520E900071399 /* Realm */,
 				5069E94721D5209A00071399 /* Domain */,
 				50A0372021D45A6200D36251 /* API */,
 				50EBBA9321D42E8F0074B699 /* Main.storyboard */,
@@ -457,12 +412,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Githubclient/Pods-Githubclient-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/BaseAPI/BaseAPI.framework",
-				"${BUILT_PRODUCTS_DIR}/Dip/Dip.framework",
-				"${BUILT_PRODUCTS_DIR}/GithubAPI/GithubAPI.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
@@ -473,12 +422,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BaseAPI.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GithubAPI.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
@@ -542,11 +485,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5069E95721D5797200071399 /* UserViewController.swift in Sources */,
+				5069E95E21D6C9E200071399 /* RepositoryTableController.swift in Sources */,
 				50EBBA9221D42E8F0074B699 /* LoginViewController.swift in Sources */,
 				5069E95021D56EB500071399 /* APIService.swift in Sources */,
 				50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */,
 				5069E95421D5771A00071399 /* ColorTheme.swift in Sources */,
-				5069E95921D57D4900071399 /* RepositoryTableViewController.swift in Sources */,
+				5069E95921D57D4900071399 /* RepositoryNavController.swift in Sources */,
 				50A0371D21D4464100D36251 /* User.swift in Sources */,
 				50A0371F21D4553800D36251 /* Repository.swift in Sources */,
 			);
