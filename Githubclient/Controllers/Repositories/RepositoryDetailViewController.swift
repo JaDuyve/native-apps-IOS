@@ -9,7 +9,7 @@
 import UIKit
 import Siesta
 import MarkdownView
-
+import SwiftIcons
 
 class RepositoryDetailedViewController: UIViewController, ResourceObserver {
     
@@ -18,6 +18,7 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
     @IBOutlet weak var projectName: UILabel!
     @IBOutlet weak var owner: UILabel!
     @IBOutlet weak var repoDescription: UILabel!
+    @IBOutlet weak var btnStar: UIButton!
     
     @IBOutlet weak var lblStars: UILabel!
     @IBOutlet weak var lblIssues: UILabel!
@@ -26,9 +27,33 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
     
     var repository: Repository?
     
+    
+    
     var readme: FileStructureItem? {
+        return readmeResource?.typedContent()
+    }
+    
+    var isStarred: Bool {
+        return starResource?.typedContent() ?? false
+    }
+    
+    var readmeResource: Resource? {
         didSet {
-            setReadme()
+            oldValue?.removeObservers(ownedBy: self)
+            oldValue?.cancelLoadIfUnobserved(afterDelay: 0.1)
+            
+            readmeResource?.addObserver(self)
+                .loadIfNeeded()
+        }
+    }
+    
+    var starResource: Resource? {
+        didSet {
+            oldValue?.removeObservers(ownedBy: self)
+            oldValue?.cancelLoadIfUnobserved(afterDelay: 0.1)
+            
+            starResource?.addObserver(self)
+                .loadIfNeeded()
         }
     }
     
@@ -44,11 +69,15 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
         if let owner = repository?.owner.login,  let repoName = repository?.name  {
             readmeResource = APIService.getReadmeRepository(owner: owner, repositoryName: repoName)
         }
+        
+        if let repo = repository {
+            starResource = APIService.currentRepoStarred(repo)
+        }
     }
     
-   
     
-    fileprivate func showRepository() {
+    
+    private func showRepository() {
         
         avatar.imageURL = repository?.owner.avatarUrl
         projectName.text = repository?.name
@@ -71,22 +100,25 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
             lblWatchers.text = "\(watchers)"
         }
         
+        showStarred()
         
     }
     
-    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
-        readme = readmeResource?.typedContent()
-    }
-    
-    var readmeResource: Resource? {
-        didSet {
-            oldValue?.removeObservers(ownedBy: self)
-            oldValue?.cancelLoadIfUnobserved(afterDelay: 0.1)
-            
-            readmeResource?.addObserver(self)
-                .loadIfNeeded()
+    private func showStarred() {
+        
+        if isStarred {
+            btnStar.setIcon(icon: .typIcons(.star), iconSize: 25, color: .yellow, forState: .normal)
+        } else {
+            btnStar.setIcon(icon: .typIcons(.starOutline),iconSize: 25 ,color: .yellow, forState: .normal)
         }
     }
+    
+    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        setReadme()
+        showStarred()
+    }
+    
+    
     
     private func setReadme() {
         
@@ -102,15 +134,26 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
             }
             task.resume()
         }
+    }
+    
+    @IBAction func clickStar(_ sender: UIButton) {
+        guard let repo = repository else {
+            return
+        }
         
-        
+        btnStar?.isEnabled = false
+        APIService.starRepository(isStarred: !isStarred, repository: repo)
+            .onCompletion {
+            _ in self.btnStar?.isEnabled = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "show_file_structure_repo" {
             if let files = segue.destination as? FileStructureRepoTableController {
                 
-                files.repository = repository
+                files.contentUrl = repository?.contentsUrl
+                files.title = "Files"
             }
         }
     }

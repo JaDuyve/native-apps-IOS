@@ -57,6 +57,8 @@ class RepositoryTableController: UITableViewController, ResourceObserver {
             repositoriesResource = APIService.repositories(owner: username_checked)
         case "subscriptions":
             repositoriesResource = APIService.repositoriesSubscription(owner: username_checked)
+        case "starred":
+            repositoriesResource = APIService.repositoriesStarred(owner: username_checked)
         default:
             performSegue(withIdentifier: "show_user_fromrepo", sender: nil)
         }

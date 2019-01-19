@@ -9,6 +9,8 @@
 import UIKit
 import Siesta
 import RealmSwift
+import SwiftKeychainWrapper
+
 
 class UserViewController: UITableViewController, ResourceObserver {
     
@@ -21,9 +23,16 @@ class UserViewController: UITableViewController, ResourceObserver {
         didSet {
             self.populateUserView(user)
             
-            if let newUser = user {
-                self.saveUser(newUser)
+            guard  let us = user else {
+                return
             }
+            
+            if let old = KeychainWrapper.standard.integer(forKey: "userId") {
+                RealmService.deleteUser(userId: old)
+            }
+            KeychainWrapper.standard.set(us.id, forKey: "userId")
+            
+            RealmService.saveUser(user: us)
         }
     }
     
@@ -32,11 +41,15 @@ class UserViewController: UITableViewController, ResourceObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let realm = try! Realm()
+        print("realm file location", realm.configuration.fileURL!)
         
+        guard let userId = KeychainWrapper.standard.integer(forKey: "userId") else {
+            statusOverlay.embed(in: self)
+            return
+        }
         
-        statusOverlay.embed(in: self)
-        populateUserView(nil)
-        
+        populateUserView(RealmService.retrieveUser(userId: userId))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +95,7 @@ class UserViewController: UITableViewController, ResourceObserver {
             performSegue(withIdentifier: "show_repo_list", sender: self)
         case 2:
             selectedList = "Starred"
+            performSegue(withIdentifier: "show_repo_list", sender: self)
         case 3:
             selectedList = "Subscriptions"
             performSegue(withIdentifier: "show_repo_list", sender: self)
@@ -103,36 +117,27 @@ class UserViewController: UITableViewController, ResourceObserver {
                     repoTable.repoListUrl = "subscriptions"
                     repoTable.username = user?.login
                     repoTable.repoListNavigationItem.title = selectedList
+                case "Starred":
+                    repoTable.repoListUrl = "starred"
+                    repoTable.username = user?.login
+                    repoTable.repoListNavigationItem.title = selectedList
                 default:
                     repoTable.repoListUrl = "repos"
                     repoTable.username = user?.login
                     repoTable.repoListNavigationItem.title = selectedList
                 }
             }
+        } else if segue.identifier == "show_login_screen" {
+            logout()
         }
     }
     
-    private func saveUser(_ user: User) {
-        let realmUser = RealmUser(
-            id: user.id,
-            login: user.login,
-            avatarUrl: user.avatarUrl,
-            followersUrl: user.followersUrl,
-            followingUrl: user.followingUrl,
-            followers: user.followers,
-            following: user.following,
-            publicRepos: user.publicRepos,
-            reposUrl: user.reposUrl,
-            subscriptionUrl: user.subscriptionsUrl
-        )
-        
-        let realm = try! Realm()
-        
-//        try! realm.write {
-//            realm.d
-//            realm.add(realmUser)
-//
-//        }
+    private func logout() {
+        RealmService.deletedbContent()
+        KeychainWrapper.standard.removeAllKeys()
         
     }
+    
+    
+    
 }

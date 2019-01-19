@@ -47,4 +47,22 @@ class RealmUser: Object {
         self.reposUrl = reposUrl
         self.subscriptionUrl = subscriptionUrl
     }
+    
+    convenience init(_ user: User) {
+        self.init()
+        self.id = user.id
+        self.login = user.login
+        self.avatarUrl = user.avatarUrl
+        self.followersUrl = user.followersUrl
+        self.followingUrl = user.followingUrl
+        self.followers = user.followers  ?? 0
+        self.following = user.following  ?? 0
+        self.publicRepos = user.publicRepos ?? 0
+        self.reposUrl = user.reposUrl
+        self.subscriptionUrl = user.subscriptionsUrl
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

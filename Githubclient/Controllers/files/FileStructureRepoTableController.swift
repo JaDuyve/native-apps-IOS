@@ -8,10 +8,11 @@
 
 import Siesta
 import UIKit
+import SwiftIcons
 
 class FileStructureRepoTableController: UITableViewController, ResourceObserver {
     
-    var title: String?
+    var nvTitle: String?
     var contentUrl: String?
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
@@ -35,24 +36,58 @@ class FileStructureRepoTableController: UITableViewController, ResourceObserver 
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationTitle.title = nvTitle ?? "Files"
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let owner = repository?.owner.login, let repoName = repository?.name {
-//            fileStructureContentsResource = APIService.filesRepository(owner: owner, repositoryName: repoName)
-//
-//        }
-        if let url = contentUrl {
-            url.index(before: "/repos")
-            fileStructureContentsResource = APIService.filesRepository(url: url)
-            
+        guard let url = contentUrl else {
+            return
         }
+        
+        let cleanUrl = self.cleanUrl(url: url)
+        let urlWithoutBaseUrl = self.removeBaseurl(url: cleanUrl)
+        print(urlWithoutBaseUrl)
+        fileStructureContentsResource = APIService.filesRepository(url: urlWithoutBaseUrl)
+        
+    }
+    
+    private func cleanUrl(url: String) -> String {
+        let newUrl = self.removeTextAfter(text: url, indexText: "{")
+        return self.removeTextAfter(text: newUrl, indexText: "?")
+    }
+    
+    private func removeTextAfter(text: String, indexText: String) -> String {
+        let range = text.range(of: indexText)
+        
+        guard let newRange = range else {
+            return text
+        }
+        
+        let start = newRange.lowerBound
+        
+        return String(text[text.startIndex..<start])
+    }
+    
+    private func removeBaseurl(url: String) -> String {
+        let range = url.range(of: "/repos")
+        guard let newRange = range else {
+            
+            return url
+        }
+        
+        let start = newRange.lowerBound
+        
+        return String(url[start..<url.endIndex])
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileStructureContents.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
@@ -108,19 +143,21 @@ class FileStructureRepoTableController: UITableViewController, ResourceObserver 
     }
 }
 
-
-
-
-
-
 class fileTableCell: UITableViewCell {
     
     var fileItem: FileStructureItem? {
         didSet {
             self.textLabel?.text = fileItem?.name
+            
+            if fileItem?.type == "dir" {
+                self.imageView?.setIcon(icon: .typIcons(.folder))
+
+            } else if fileItem?.type == "file" {
+                self.imageView?.setIcon(icon: .typIcons(.document))
+            }
         }
     }
     
+    
+    
 }
-
-

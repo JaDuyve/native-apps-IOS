@@ -57,7 +57,9 @@ class _APIService {
             }
         }
         
-        
+        service.configure("/user/starred/*/*") {
+            $0.pipeline[.model].add(TrueIfRepositoryStarred())
+        }
         
         service.configureTransformer("/user") {
             // Decode json to User object
@@ -80,12 +82,12 @@ class _APIService {
             try jsonDecoder.decode([Repository].self, from: $0.content)
         }
         
-        service.configureTransformer("/users/*/starred/repo") {
+        service.configureTransformer("/users/*/starred") {
             // Decode json to array of Repository Objects
             try jsonDecoder.decode([Repository].self, from: $0.content)
         }
         
-        service.configureTransformer("/repos/*/*/contents") {
+        service.configureTransformer("/repos/*/*/contents/**") {
             // Decode json to array of FileStructureItem Objects
             try jsonDecoder.decode([FileStructureItem].self, from: $0.content)
         }
@@ -93,6 +95,7 @@ class _APIService {
         service.configureTransformer("/repos/*/*/readme") {
             try jsonDecoder.decode(FileStructureItem.self, from: $0.content)
         }
+        
     }
     
     func clearToken() {
@@ -126,7 +129,7 @@ class _APIService {
     
     func repositoriesStarred(owner username: String) -> Resource {
         return service
-            .resource("/users/\(username)/starred/repos")
+            .resource("/users/\(username)/starred")
     }
     
 //    func filesRepository(owner username: String, repositoryName: String) -> Resource {
@@ -149,6 +152,23 @@ class _APIService {
             .resource(url);
     }
     
+    func currentRepoStarred(_ repository: Repository) -> Resource {
+        return service
+            .resource("/user/starred/")
+            .child(repository.owner.login)
+            .child(repository.name)
+        
+    }
+    
+    func starRepository(isStarred: Bool, repository: Repository) -> Request {
+        let starResource = currentRepoStarred(repository)
+        return starResource
+            .request(isStarred ? .put : .delete)
+            .onSuccess{ _ in
+                starResource.overrideLocalContent(with: isStarred)
+        }
+    }
+    
     private struct GitHubErrorMessageExtractor: ResponseTransformer {
         let jsonDecoder: JSONDecoder
         
@@ -167,6 +187,26 @@ class _APIService {
         
         private struct GitHubErrorEnvelope: Decodable {
             let message: String
+        }
+    }
+    
+    private struct TrueIfRepositoryStarred: ResponseTransformer {
+        func process(_ result: Response) -> Response {
+            switch result {
+            case .success(var entity):
+                entity.content = true
+                return logTransformation(
+                    .success(entity))
+                
+            case .failure(let error):
+                if error.httpStatusCode == 404, var entity = error.entity {
+                    entity.content = false
+                    return logTransformation(
+                        .success(entity))
+                } else {
+                    return result
+                }
+            }
         }
     }
 }
