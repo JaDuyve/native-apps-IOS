@@ -13,9 +13,9 @@ struct User: Codable {
     let avatarUrl: String
     let followersUrl: String
     let followingUrl: String
-    let followers: Int?
-    let following: Int?
-    let publicRepos: Int?
+    let followers: Int = 0
+    let following: Int = 0
+    let publicRepos: Int = 0
     let reposUrl: String
     let subscriptionsUrl: String
     

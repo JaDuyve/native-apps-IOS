@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E0A6C8F0A8D5AD12EFE424E /* Pods_GithubclientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEAB8C3DB018C7A887BE5C32 /* Pods_GithubclientUITests.framework */; };
 		40BB1373B59DB4D863089703 /* Pods_Githubclient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107990D48E570E39664C815 /* Pods_Githubclient.framework */; };
+		5055414621F28AB5006C4A08 /* FileWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055414521F28AB5006C4A08 /* FileWebView.swift */; };
 		5069E95021D56EB500071399 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E94F21D56EB500071399 /* APIService.swift */; };
 		5069E95421D5771A00071399 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95321D5771A00071399 /* ColorTheme.swift */; };
 		5069E95721D5797200071399 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E95621D5797200071399 /* UserViewController.swift */; };
@@ -17,6 +18,8 @@
 		5069E96221D80F7700071399 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5069E96121D80F7700071399 /* FontAwesome.ttf */; };
 		5069E96621D8306400071399 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96521D8306400071399 /* RepositoryDetailViewController.swift */; };
 		5069E96821D839AA00071399 /* FileStructureRepoTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */; };
+		5069E96A21D83BF700071399 /* FileStructureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96921D83BF700071399 /* FileStructureItem.swift */; };
+		5069E96D21D9167300071399 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069E96C21D9167300071399 /* RealmUser.swift */; };
 		50A0371D21D4464100D36251 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371C21D4464100D36251 /* User.swift */; };
 		50A0371F21D4553800D36251 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A0371E21D4553800D36251 /* Repository.swift */; };
 		50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */; };
@@ -49,6 +52,7 @@
 		0A5C6046894AA6FB5DB58361 /* Pods-Githubclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Githubclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-Githubclient/Pods-Githubclient.release.xcconfig"; sourceTree = "<group>"; };
 		2107990D48E570E39664C815 /* Pods_Githubclient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Githubclient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADF60882DA993F0128EEF12 /* Pods-GithubclientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubclientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubclientTests/Pods-GithubclientTests.release.xcconfig"; sourceTree = "<group>"; };
+		5055414521F28AB5006C4A08 /* FileWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWebView.swift; sourceTree = "<group>"; };
 		5069E94F21D56EB500071399 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		5069E95321D5771A00071399 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		5069E95621D5797200071399 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		5069E96421D8177200071399 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = "/Users/jariduyvejonck/Documents/hogent_3jaar/ios_dev/new_project_version/native-apps-IOS/Githubclient/UI/images.xcassets"; sourceTree = "<absolute>"; };
 		5069E96521D8306400071399 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStructureRepoTableController.swift; sourceTree = "<group>"; };
+		5069E96921D83BF700071399 /* FileStructureItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStructureItem.swift; sourceTree = "<group>"; };
+		5069E96C21D9167300071399 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		50A0371C21D4464100D36251 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50A0371E21D4553800D36251 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		50EBBA8C21D42E8F0074B699 /* Githubclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Githubclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,9 +114,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5055414721F28ACE006C4A08 /* files */ = {
+			isa = PBXGroup;
+			children = (
+				5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */,
+				5055414521F28AB5006C4A08 /* FileWebView.swift */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
 		5069E94721D5209A00071399 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5069E96B21D915FA00071399 /* RealmModel */,
 				50A0371B21D4463100D36251 /* Model */,
 			);
 			path = Domain;
@@ -129,6 +145,7 @@
 		5069E95221D576E800071399 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5055414721F28ACE006C4A08 /* files */,
 				5069E95C21D6C9BB00071399 /* Repositories */,
 				5069E95521D5796000071399 /* UserViewController */,
 				50EBBA8F21D42E8F0074B699 /* AppDelegate.swift */,
@@ -151,9 +168,16 @@
 				5069E95821D57D4900071399 /* RepositoryNavController.swift */,
 				5069E95D21D6C9E200071399 /* RepositoryTableController.swift */,
 				5069E96521D8306400071399 /* RepositoryDetailViewController.swift */,
-				5069E96721D839AA00071399 /* FileStructureRepoTableController.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		5069E96B21D915FA00071399 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				5069E96C21D9167300071399 /* RealmUser.swift */,
+			);
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		50A0371A21D4383800D36251 /* Login */ = {
@@ -169,6 +193,7 @@
 			children = (
 				50A0371C21D4464100D36251 /* User.swift */,
 				50A0371E21D4553800D36251 /* Repository.swift */,
+				5069E96921D83BF700071399 /* FileStructureItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,6 +445,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Githubclient/Pods-Githubclient-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Siesta/Siesta.framework",
@@ -430,6 +456,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siesta.framework",
@@ -495,13 +522,16 @@
 				5069E95721D5797200071399 /* UserViewController.swift in Sources */,
 				5069E95E21D6C9E200071399 /* RepositoryTableController.swift in Sources */,
 				50EBBA9221D42E8F0074B699 /* LoginViewController.swift in Sources */,
+				5055414621F28AB5006C4A08 /* FileWebView.swift in Sources */,
 				5069E95021D56EB500071399 /* APIService.swift in Sources */,
 				50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */,
 				5069E95421D5771A00071399 /* ColorTheme.swift in Sources */,
+				5069E96D21D9167300071399 /* RealmUser.swift in Sources */,
 				5069E95921D57D4900071399 /* RepositoryNavController.swift in Sources */,
 				50A0371D21D4464100D36251 /* User.swift in Sources */,
 				5069E96821D839AA00071399 /* FileStructureRepoTableController.swift in Sources */,
 				50A0371F21D4553800D36251 /* Repository.swift in Sources */,
+				5069E96A21D83BF700071399 /* FileStructureItem.swift in Sources */,
 				5069E96621D8306400071399 /* RepositoryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

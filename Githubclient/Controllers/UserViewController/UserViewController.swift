@@ -8,6 +8,7 @@
 
 import UIKit
 import Siesta
+import RealmSwift
 
 class UserViewController: UITableViewController, ResourceObserver {
     
@@ -19,6 +20,10 @@ class UserViewController: UITableViewController, ResourceObserver {
     var user: User? {
         didSet {
             self.populateUserView(user)
+            
+            if let newUser = user {
+                self.saveUser(newUser)
+            }
         }
     }
     
@@ -105,5 +110,29 @@ class UserViewController: UITableViewController, ResourceObserver {
                 }
             }
         }
+    }
+    
+    private func saveUser(_ user: User) {
+        let realmUser = RealmUser(
+            id: user.id,
+            login: user.login,
+            avatarUrl: user.avatarUrl,
+            followersUrl: user.followersUrl,
+            followingUrl: user.followingUrl,
+            followers: user.followers,
+            following: user.following,
+            publicRepos: user.publicRepos,
+            reposUrl: user.reposUrl,
+            subscriptionUrl: user.subscriptionsUrl
+        )
+        
+        let realm = try! Realm()
+        
+//        try! realm.write {
+//            realm.d
+//            realm.add(realmUser)
+//
+//        }
+        
     }
 }

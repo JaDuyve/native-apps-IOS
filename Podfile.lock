@@ -1,4 +1,5 @@
 PODS:
+  - MarkdownView (1.5.0)
   - p2.OAuth2 (4.0.1)
   - Realm (3.13.0):
     - Realm/Headers (= 3.13.0)
@@ -11,6 +12,7 @@ PODS:
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
+  - MarkdownView
   - p2.OAuth2 (from `https://github.com/p2/OAuth2`)
   - RealmSwift
   - Siesta/UI (~> 1.0)
@@ -18,6 +20,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - MarkdownView
     - Realm
     - RealmSwift
     - Siesta
@@ -35,12 +38,13 @@ CHECKOUT OPTIONS:
     :submodules: true
 
 SPEC CHECKSUMS:
+  MarkdownView: 5bbee438c823db1cd189002d44c84fa909b3a896
   p2.OAuth2: fdc2effef37793a8f775dd4760bc4c1ea906c956
   Realm: 5edd2ee65406aef591a4f9895de5a3440e51b3d8
   RealmSwift: be5ebc7930e37cd3376b41cec7f21984528aaa16
   Siesta: 337a9c39c9b78bba904286310c86562a886efdab
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: ed826c4dc1609f197e226fa4539b3f37182d2ac6
+PODFILE CHECKSUM: 346d7d3407d55f707d5d3fc04888bfa635d76092
 
 COCOAPODS: 1.5.3

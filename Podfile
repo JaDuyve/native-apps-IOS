@@ -11,6 +11,7 @@ target 'Githubclient' do
   
   pod 'p2.OAuth2', :git => 'https://github.com/p2/OAuth2', :submodules => true
   pod 'Siesta/UI', '~> 1.0'
+  pod 'MarkdownView'
   
   target 'GithubclientTests' do
     inherit! :search_paths

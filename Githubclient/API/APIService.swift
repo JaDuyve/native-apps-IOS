@@ -84,6 +84,15 @@ class _APIService {
             // Decode json to array of Repository Objects
             try jsonDecoder.decode([Repository].self, from: $0.content)
         }
+        
+        service.configureTransformer("/repos/*/*/contents") {
+            // Decode json to array of FileStructureItem Objects
+            try jsonDecoder.decode([FileStructureItem].self, from: $0.content)
+        }
+        
+        service.configureTransformer("/repos/*/*/readme") {
+            try jsonDecoder.decode(FileStructureItem.self, from: $0.content)
+        }
     }
     
     func clearToken() {
@@ -118,6 +127,26 @@ class _APIService {
     func repositoriesStarred(owner username: String) -> Resource {
         return service
             .resource("/users/\(username)/starred/repos")
+    }
+    
+//    func filesRepository(owner username: String, repositoryName: String) -> Resource {
+//        return service
+//        .resource("/repos/\(username)/\(repositoryName)/contents")
+//    }
+    
+    func filesRepository(url: String) -> Resource {
+        return service
+            .resource(url)
+    }
+    
+    func getReadmeRepository(owner username: String, repositoryName: String) -> Resource {
+        return service
+            .resource("/repos/\(username)/\(repositoryName)/readme")
+    }
+    
+    func getContentReadmeRepository(readmeUrl url: String) -> Resource {
+        return service
+            .resource(url);
     }
     
     private struct GitHubErrorMessageExtractor: ResponseTransformer {
