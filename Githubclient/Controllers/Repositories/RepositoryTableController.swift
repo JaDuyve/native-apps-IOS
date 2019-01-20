@@ -8,7 +8,7 @@
 
 import UIKit
 import Siesta
-
+import SwiftIcons
 class RepositoryTableController: UITableViewController, ResourceObserver {
     
     @IBOutlet weak var repoListNavigationItem: UINavigationItem!
@@ -133,6 +133,9 @@ class RepositoryTableCell: UITableViewCell {
     @IBOutlet weak var forks: UILabel!
     @IBOutlet weak var owner: UILabel!
     @IBOutlet weak var descriptionRepo: UILabel!
+    @IBOutlet weak var lblStarIcon: UILabel!
+    @IBOutlet weak var lblForkIcon: UILabel!
+    @IBOutlet weak var lblOwnerIcon: UILabel!
     
     var repository: Repository? {
         didSet {
@@ -144,8 +147,8 @@ class RepositoryTableCell: UITableViewCell {
             
             if let starsCount = repository?.stargazersCount {
                 stars.text = String(starsCount)
-           }
-
+            }
+            
             if let forkCount = repository?.forksCount {
                 forks.text = String(forkCount)
             }
@@ -153,6 +156,11 @@ class RepositoryTableCell: UITableViewCell {
             if let avatarUrl = repository?.owner?.avatarUrl {
                 repoOwnerAvatar.imageURL = avatarUrl
             }
+            
+            lblStarIcon.setIcon(icon: .typIcons(.star), iconSize: 20, color: Theme.userIconLabels)
+            lblOwnerIcon.setIcon(icon: .fontAwesomeSolid(.user), iconSize: 20, color: Theme.userIconLabels)
+            lblForkIcon.setIcon(icon: .icofont(.spoonAndFork), iconSize: 20, color: Theme.userIconLabels)
+            
         }
     }
 }

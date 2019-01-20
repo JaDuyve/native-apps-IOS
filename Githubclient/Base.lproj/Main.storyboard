@@ -97,10 +97,13 @@
                                                     <rect key="frame" x="112" y="0.0" width="151" height="193"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7dh-wl-gV1" customClass="RemoteImageView" customModule="Siesta">
-                                                            <rect key="frame" x="0.0" y="0.0" width="151" height="150.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="151" height="151"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="7dh-wl-gV1" secondAttribute="height" multiplier="1:1" id="CB3-82-Wei"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNq-Rl-FoC">
-                                                            <rect key="frame" x="54.5" y="172.5" width="42" height="20.5"/>
+                                                            <rect key="frame" x="54.5" y="173" width="42" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -327,6 +330,9 @@
                                     <outlet property="descriptionRepo" destination="KkB-2z-n25" id="z7e-qG-QPF"/>
                                     <outlet property="forks" destination="lWR-cy-HIo" id="Y7B-bZ-2Mf"/>
                                     <outlet property="language" destination="bG2-w8-uUi" id="Gxn-7J-dsa"/>
+                                    <outlet property="lblForkIcon" destination="CbO-JJ-cdW" id="Bh6-85-PBj"/>
+                                    <outlet property="lblOwnerIcon" destination="qXb-nZ-2nM" id="GsB-FY-0dB"/>
+                                    <outlet property="lblStarIcon" destination="EIC-r2-iIR" id="iHT-3L-7n1"/>
                                     <outlet property="owner" destination="CRD-On-NAr" id="oNB-58-jJ4"/>
                                     <outlet property="repoName" destination="nI5-Is-XQf" id="gMr-PW-Jnn"/>
                                     <outlet property="repoOwnerAvatar" destination="NrV-DO-6Ay" id="LfF-SG-Ih9"/>
@@ -1053,7 +1059,7 @@
         <image name="log-out" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EFe-zd-aVc"/>
-        <segue reference="FCB-99-WFJ"/>
+        <segue reference="6pc-N7-oxz"/>
+        <segue reference="1Gw-95-Tk6"/>
     </inferredMetricsTieBreakers>
 </document>
