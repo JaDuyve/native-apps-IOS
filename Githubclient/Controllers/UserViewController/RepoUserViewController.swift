@@ -31,13 +31,18 @@ class RepoUserViewController: UIViewController, ResourceObserver, UIGestureRecog
     @IBOutlet weak var lblFollowers: UILabel!
     @IBOutlet weak var lblFollowing: UILabel!
     @IBOutlet weak var lblRepositories: UILabel!
+    
+    
     @IBOutlet weak var svRepositories: UIStackView!
-    
-    
+    @IBOutlet weak var svFollowers: UIStackView!
+    @IBOutlet weak var svFollowing: UIStackView!
     
     var statusOverlay = ResourceStatusOverlay()
     
     var usernameForUrl: String?
+    
+    private var followersOrFollowingUrl: String?
+    private var nvTitle: String?
     
     var user: User? {
         didSet {
@@ -72,11 +77,23 @@ class RepoUserViewController: UIViewController, ResourceObserver, UIGestureRecog
         
         statusOverlay.embed(in: self)
         
-        let UITapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedRepositories))
-        UITapRecognizer.delegate = self
-        svRepositories.addGestureRecognizer(UITapRecognizer)
+        let UITapRecognizerRepo = UITapGestureRecognizer(target: self, action: #selector(self.tappedRepositories))
+        UITapRecognizerRepo.delegate = self
+        svRepositories.addGestureRecognizer(UITapRecognizerRepo)
         
         svRepositories.isUserInteractionEnabled = true
+        
+        let UITapRecognizerFollowers = UITapGestureRecognizer(target: self, action: #selector(self.tappedFollowers))
+        UITapRecognizerFollowers.delegate = self
+        svFollowers.addGestureRecognizer(UITapRecognizerFollowers)
+        
+        svFollowers.isUserInteractionEnabled = true
+        
+        let UITapRecognizerFollowing = UITapGestureRecognizer(target: self, action: #selector(self.tappedFollowing))
+        UITapRecognizerFollowing.delegate = self
+        svFollowing.addGestureRecognizer(UITapRecognizerFollowing)
+        
+        svFollowing.isUserInteractionEnabled = true
     }
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
@@ -135,12 +152,38 @@ class RepoUserViewController: UIViewController, ResourceObserver, UIGestureRecog
         performSegue(withIdentifier: "show_repositories_form_repo_user", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let repoTable = segue.destination as? RepositoryTableController {
-            repoTable.repoListUrl = "not_cache_repositories"
-            repoTable.username = user?.login
-            repoTable.repoListNavigationItem.title = user?.login
+    @objc func tappedFollowers() {
+        guard let user = user else {
+            return
         }
+        followersOrFollowingUrl = "\(user.login)/followers"
+        nvTitle = "Followers"
+        performSegue(withIdentifier: "show_users_table", sender: self)
+    }
+    
+    @objc func tappedFollowing() {
+        guard let user = user else {
+            return
+        }
+        followersOrFollowingUrl = "\(user.login)/following"
+        nvTitle = "Following"
+        performSegue(withIdentifier: "show_users_table", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "show_users_table" {
+            if let userTable = segue.destination as? UsersTableViewController {
+                userTable.usersUrl = followersOrFollowingUrl
+                userTable.nvItem.title = nvTitle
+            }
+        } else if segue.identifier == "show_repositories_form_repo_user" {
+            if let repoTable = segue.destination as? RepositoryTableController {
+                repoTable.repoListUrl = "not_cache_repositories"
+                repoTable.username = user?.login
+                repoTable.repoListNavigationItem.title = user?.login
+            }
+        }
+        
     }
     
     @IBAction func openBlog(_ sender: UIButton) {

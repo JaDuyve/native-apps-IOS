@@ -11,6 +11,7 @@
 		40BB1373B59DB4D863089703 /* Pods_Githubclient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2107990D48E570E39664C815 /* Pods_Githubclient.framework */; };
 		5013455F21F3E53500278B9C /* RepoUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013455E21F3E53500278B9C /* RepoUserViewController.swift */; };
 		503F1C6221F4FC8800D13701 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F1C6121F4FC8800D13701 /* CustomNavigationBar.swift */; };
+		503F1C6421F5243000D13701 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F1C6321F5243000D13701 /* UsersTableViewController.swift */; };
 		5055414621F28AB5006C4A08 /* FileWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5055414521F28AB5006C4A08 /* FileWebView.swift */; };
 		505F7C7121F3948C001AA9F4 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F7C7021F3948C001AA9F4 /* RealmRepository.swift */; };
 		505F7C7321F3975C001AA9F4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F7C7221F3975C001AA9F4 /* RealmService.swift */; };
@@ -58,6 +59,7 @@
 		3ADF60882DA993F0128EEF12 /* Pods-GithubclientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubclientTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubclientTests/Pods-GithubclientTests.release.xcconfig"; sourceTree = "<group>"; };
 		5013455E21F3E53500278B9C /* RepoUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoUserViewController.swift; sourceTree = "<group>"; };
 		503F1C6121F4FC8800D13701 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		503F1C6321F5243000D13701 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		5055414521F28AB5006C4A08 /* FileWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWebView.swift; sourceTree = "<group>"; };
 		505F7C7021F3948C001AA9F4 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		505F7C7221F3975C001AA9F4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				5069E95621D5797200071399 /* UserViewController.swift */,
 				5013455E21F3E53500278B9C /* RepoUserViewController.swift */,
+				503F1C6321F5243000D13701 /* UsersTableViewController.swift */,
 			);
 			path = UserViewController;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				5069E95E21D6C9E200071399 /* RepositoryTableController.swift in Sources */,
 				50EBBA9221D42E8F0074B699 /* LoginViewController.swift in Sources */,
 				5055414621F28AB5006C4A08 /* FileWebView.swift in Sources */,
+				503F1C6421F5243000D13701 /* UsersTableViewController.swift in Sources */,
 				5069E95021D56EB500071399 /* APIService.swift in Sources */,
 				505F7C7121F3948C001AA9F4 /* RealmRepository.swift in Sources */,
 				50EBBA9021D42E8F0074B699 /* AppDelegate.swift in Sources */,

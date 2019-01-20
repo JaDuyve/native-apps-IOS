@@ -58,6 +58,15 @@ class _APIService {
             try jsonDecoder.decode(User.self, from: $0.content)
         }
         
+        service.configureTransformer("/users/*/followers") {
+            // Decode json to array of Users Objects
+            try jsonDecoder.decode([User].self, from: $0.content)
+        }
+        
+        service.configureTransformer("/users/*/following") {
+            // Decode json to array of Users Objects
+            try jsonDecoder.decode([User].self, from: $0.content)
+        }
         
         service.configureTransformer("/users/*/repos") {
             // Decode json to array of Repository Objcts
@@ -82,6 +91,7 @@ class _APIService {
         service.configureTransformer("/repos/*/*/readme") {
             try jsonDecoder.decode(FileStructureItem.self, from: $0.content)
         }
+        
         
     }
     
@@ -141,6 +151,14 @@ class _APIService {
             .child(repository.name)
         
     }
+    
+    func getFollowersOrFollowing(url: String) -> Resource {
+        return service
+            .resource("/users/\(url)")
+    }
+    
+    
+    
     
     func starRepository(isStarred: Bool, repository: Repository) -> Request {
         let starResource = currentRepoStarred(repository)

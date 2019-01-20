@@ -199,6 +199,67 @@
             </objects>
             <point key="canvasLocation" x="847" y="-21"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="j0z-EL-cFq">
+            <objects>
+                <tableViewController id="teb-ch-n0H" customClass="UsersTableViewController" customModule="Githubclient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Yzq-uV-UKT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="user_cell" rowHeight="72" id="dXo-eG-h2a" customClass="UserTableCell" customModule="Githubclient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dXo-eG-h2a" id="bto-Y0-YQo">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="71.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Pm-EY-hbJ" customClass="RemoteImageView" customModule="Siesta">
+                                            <rect key="frame" x="0.0" y="0.0" width="69" height="69"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="69" id="GIe-Pd-IwD"/>
+                                                <constraint firstAttribute="width" secondItem="4Pm-EY-hbJ" secondAttribute="height" multiplier="1:1" id="MXk-1M-5rx"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehx-qg-xjQ">
+                                            <rect key="frame" x="77" y="11" width="256" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="4Pm-EY-hbJ" secondAttribute="bottom" constant="-8" id="8m0-Ov-j7n"/>
+                                        <constraint firstItem="4Pm-EY-hbJ" firstAttribute="top" secondItem="bto-Y0-YQo" secondAttribute="top" id="MeE-Nu-23M"/>
+                                        <constraint firstItem="ehx-qg-xjQ" firstAttribute="top" secondItem="bto-Y0-YQo" secondAttribute="topMargin" id="TJy-cr-bPR"/>
+                                        <constraint firstItem="4Pm-EY-hbJ" firstAttribute="leading" secondItem="bto-Y0-YQo" secondAttribute="leading" id="hib-yc-eSP"/>
+                                        <constraint firstItem="ehx-qg-xjQ" firstAttribute="trailing" secondItem="bto-Y0-YQo" secondAttribute="trailingMargin" id="ldG-T7-LXc"/>
+                                        <constraint firstItem="ehx-qg-xjQ" firstAttribute="bottom" secondItem="bto-Y0-YQo" secondAttribute="bottomMargin" id="nBa-Uy-wYV"/>
+                                        <constraint firstItem="ehx-qg-xjQ" firstAttribute="leading" secondItem="4Pm-EY-hbJ" secondAttribute="trailing" constant="8" id="zMG-NB-sXW"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ivAvatar" destination="4Pm-EY-hbJ" id="id9-am-Q2a"/>
+                                    <outlet property="lblUsername" destination="ehx-qg-xjQ" id="6R4-ht-Xe1"/>
+                                    <segue destination="OEH-qS-mKi" kind="show" identifier="show_user_from_follow" id="I6A-1R-qOO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="teb-ch-n0H" id="18b-yu-eOv"/>
+                            <outlet property="delegate" destination="teb-ch-n0H" id="xKK-KL-ZP7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="Hv6-kL-gih"/>
+                    <connections>
+                        <outlet property="nvItem" destination="Hv6-kL-gih" id="7wz-ic-FXT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fho-uP-RWm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3413.5999999999999" y="691.304347826087"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="4Ej-r0-ee6">
             <objects>
@@ -1023,9 +1084,12 @@
                         <outlet property="lblLocation" destination="rk9-JY-zag" id="3XT-se-dTj"/>
                         <outlet property="lblRepositories" destination="b8k-Rg-VjZ" id="Efj-KX-WbV"/>
                         <outlet property="lblUsername" destination="hLP-S0-aLC" id="7fh-o6-pMg"/>
+                        <outlet property="svFollowers" destination="dmE-CD-DmA" id="dKB-6I-yup"/>
+                        <outlet property="svFollowing" destination="1Bj-xT-j9D" id="o2N-vG-nRp"/>
                         <outlet property="svRepositories" destination="4lZ-1A-ZEl" id="2fT-D1-h1N"/>
                         <outlet property="userAvatar" destination="323-fa-9ss" id="JWP-gK-fQv"/>
                         <segue destination="QrE-TO-UgH" kind="show" identifier="show_repositories_form_repo_user" id="EFe-zd-aVc"/>
+                        <segue destination="teb-ch-n0H" kind="show" identifier="show_users_table" id="UZs-C3-WB2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8L-y5-hwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1059,7 +1123,8 @@
         <image name="log-out" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6pc-N7-oxz"/>
+        <segue reference="I6A-1R-qOO"/>
+        <segue reference="EFe-zd-aVc"/>
         <segue reference="1Gw-95-Tk6"/>
     </inferredMetricsTieBreakers>
 </document>
