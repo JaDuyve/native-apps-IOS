@@ -39,8 +39,13 @@ class _APIService {
         //SiestaLog.Category.enabled = .all
         #endif
         
+        let formatter = DateFormatter()
         let jsonDecoder = JSONDecoder()
         
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(formatter)
         
         service.configure {
             
@@ -71,6 +76,7 @@ class _APIService {
             // Decode json to User object
             try jsonDecoder.decode(User.self, from: $0.content)
         }
+        
         
         service.configureTransformer("/users/*/repos") {
             // Decode json to array of Repository Objcts
@@ -111,7 +117,7 @@ class _APIService {
             .resource("/user")
     }
     
-    func users(_ username: String) -> Resource {
+    func user(_ username: String) -> Resource {
         return service
             .resource("/users")
             .child(username.lowercased())
@@ -131,11 +137,6 @@ class _APIService {
         return service
             .resource("/users/\(username)/starred")
     }
-    
-//    func filesRepository(owner username: String, repositoryName: String) -> Resource {
-//        return service
-//        .resource("/repos/\(username)/\(repositoryName)/contents")
-//    }
     
     func filesRepository(url: String) -> Resource {
         return service

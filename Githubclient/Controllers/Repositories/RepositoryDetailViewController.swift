@@ -11,7 +11,7 @@ import Siesta
 import MarkdownView
 import SwiftIcons
 
-class RepositoryDetailedViewController: UIViewController, ResourceObserver {
+class RepositoryDetailedViewController: UIViewController, ResourceObserver, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var avatar: RemoteImageView!
     @IBOutlet weak var mdView: MarkdownView!
@@ -61,6 +61,12 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
         super.viewDidLoad()
         
         showRepository()
+        
+        let UITapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedImage))
+        UITapRecognizer.delegate = self
+        avatar.addGestureRecognizer(UITapRecognizer)
+        
+        avatar.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +81,9 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
         }
     }
     
-    
+    @objc func tappedImage() {
+        performSegue(withIdentifier: "show_repo_user_detail", sender: self)
+    }
     
     private func showRepository() {
         
@@ -154,6 +162,11 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver {
                 
                 files.contentUrl = repository?.contentsUrl
                 files.title = "Files"
+            }
+        } else if segue.identifier == "show_repo_user_detail" {
+            if let repoUserDetail = segue.destination as? RepoUserViewController {
+                
+                repoUserDetail.usernameForUrl = repository?.owner.login
             }
         }
     }
