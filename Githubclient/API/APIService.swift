@@ -155,15 +155,15 @@ class _APIService {
         let jsonDecoder: JSONDecoder
         
         func process(_ response: Response) -> Response {
-            guard case .failure(var error) = response,     // Unless the response is a failure...
-                let errorData: Data = error.typedContent(),  // ...with data...
-                let githubError = try? jsonDecoder.decode(   // ...that encodes a standard GitHub error envelope...
+            guard case .failure(var error) = response,
+                let errorData: Data = error.typedContent(),
+                let githubError = try? jsonDecoder.decode(
                     GitHubErrorEnvelope.self, from: errorData)
                 else {
-                    return response                              // ...just leave it untouched.
+                    return response
             }
             
-            error.userMessage = githubError.message        // GitHub provided an error message. Show it to the user!
+            error.userMessage = githubError.message        
             return .failure(error)
         }
         
