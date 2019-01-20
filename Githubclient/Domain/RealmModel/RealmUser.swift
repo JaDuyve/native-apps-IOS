@@ -27,6 +27,7 @@ class RealmUser: Object {
     @objc dynamic var location: String = ""
     @objc dynamic var email: String = ""
     @objc dynamic var blog: String = ""
+    @objc dynamic var company: String = ""
     
     convenience init(
         id: Int,
@@ -43,7 +44,8 @@ class RealmUser: Object {
         bio: String,
         location: String,
         email: String,
-        blog: String
+        blog: String,
+        company: String
         ) {
         self.init()
         self.id = id
@@ -61,6 +63,7 @@ class RealmUser: Object {
         self.location = location
         self.email = email
         self.blog = blog
+        self.company = company
         
     }
     
@@ -81,9 +84,8 @@ class RealmUser: Object {
         self.location = user.location ?? ""
         self.email = user.email ?? ""
         self.blog = user.blog ?? ""
+        self.company = user.company ?? ""
     }
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+    
 }

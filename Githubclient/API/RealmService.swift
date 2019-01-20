@@ -23,7 +23,7 @@ class _RealmService {
     }
     
     func deleteUser(userId: Int) {
-        guard let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userId) else {
+        guard let user = realm.objects(RealmUser.self).filter("id = \(userId)").first else {
             return
         }
         
@@ -35,7 +35,7 @@ class _RealmService {
     
     func retrieveUser(userId: Int) -> User? {
         
-        guard let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userId) else {
+        guard let user = realm.objects(RealmUser.self).filter("id = \(userId)").first else {
             return nil
         }
     
@@ -47,5 +47,38 @@ class _RealmService {
         try! realm.write {
             realm.deleteAll()
         }
+    }
+    
+    func saveRepositories(repositories: [Repository], group: String) {
+        
+        try! realm.write {
+            repositories.forEach { repo in
+                
+                let realmRepository = RealmRepository(repo)
+                realmRepository.group = group
+                realm.add(realmRepository)
+            }
+        }
+    }
+    
+    func deleteRepositories(group: String) {
+        let realmRepositories = realm.objects(RealmRepository.self).filter("group = '\(group)'")
+        
+        try! realm.write {
+            realm.delete(realmRepositories)
+        }
+    }
+    
+    func retrieveRepositories(group: String)  -> [Repository] {
+        let realmRepositories = realm.objects(RealmRepository.self).filter("group = '\(group)'")
+        var repositories: [Repository] = []
+        
+        var repo: Repository
+        for i in 0...realmRepositories.count-1 {
+            repo = Repository(realmRepositories[i])
+            repositories.append(repo)
+        }
+        
+        return repositories
     }
 }

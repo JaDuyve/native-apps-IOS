@@ -119,7 +119,10 @@ class FileStructureRepoTableController: UITableViewController, ResourceObserver 
     
     
     func resourceChanged(_ resource: Resource, event: ResourceEvent) {
-        fileStructureContents = fileStructureContentsResource?.typedContent() ?? []
+        let temp: [FileStructureItem] = fileStructureContentsResource?.typedContent() ?? []
+        fileStructureContents = temp.sorted(by: {(first: FileStructureItem, second: FileStructureItem) -> Bool in
+            first.type < second.type
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

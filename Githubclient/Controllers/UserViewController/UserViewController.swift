@@ -80,12 +80,6 @@ class UserViewController: UITableViewController, ResourceObserver {
         usernameLabel.text = user?.login
         avatar.imageURL = user?.avatarUrl
         
-        avatar.layer.borderWidth = 3.0;
-        avatar.layer.borderColor = UIColor.white.cgColor
-        avatar.layer.cornerRadius = 10.0
-        avatar.layer.cornerRadius = avatar.frame.size.width / 2
-        avatar.clipsToBounds = true;
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,16 +122,19 @@ class UserViewController: UITableViewController, ResourceObserver {
                 }
             }
         } else if segue.identifier == "show_login_screen" {
-            logout()
+            if let loginVC = segue.destination as? LoginViewController {
+                loginVC.isLogedOut = true
+            }
         }
     }
     
-    private func logout() {
-        RealmService.deletedbContent()
-        KeychainWrapper.standard.removeAllKeys()
-        
-    }
     
+    
+    @IBAction func logout(_ sender: Any) {
+        
+        performSegue(withIdentifier: "show_login_screen", sender: nil)
+
+    }
     
     
 }

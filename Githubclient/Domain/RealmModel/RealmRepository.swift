@@ -23,6 +23,7 @@ class RealmRepository: Object {
     @objc dynamic var contentsUrl: String = ""
     @objc dynamic var commitsUrl: String = ""
     @objc dynamic var url: String = ""
+    @objc dynamic var group: String = ""
     
     convenience init(
         id: Int,
@@ -54,4 +55,26 @@ class RealmRepository: Object {
         self.commitsUrl = commitsUrl
         self.url = url
     }
+    
+    convenience init(_ repository: Repository) {
+        self.init()
+        self.id = repository.id
+        self.fullName = repository.fullName
+        self.name = repository.name
+        if let owner = repository.owner {
+            self.owner =  RealmUser(owner)
+        }
+        self.privateRepo = repository.privateRepo
+        self.descriptionRepo = repository.descriptionRepo ?? ""
+        self.language = repository.language ?? ""
+        self.stargazersCount = repository.stargazersCount  ?? 0
+        self.forksCount = repository.forksCount
+        self.watchersCount = repository.watchersCount
+        self.openIssues = repository.openIssues
+        self.contentsUrl = repository.contentsUrl
+        self.commitsUrl = repository.commitsUrl
+        self.url = repository.url
+    }
+    
+    
 }

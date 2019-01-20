@@ -23,6 +23,7 @@ struct User: Codable {
     var location: String?
     var email: String?
     var blog: String?
+    var company: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -40,6 +41,7 @@ struct User: Codable {
         case location
         case email
         case blog
+        case company
     }
     
     init(_ user: RealmUser) {
@@ -58,6 +60,7 @@ struct User: Codable {
         self.location = user.location
         self.email = user.email
         self.blog = user.blog
+        self.company = user.company
     }
 }
 

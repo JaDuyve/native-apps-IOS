@@ -72,7 +72,7 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver, UIGe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let owner = repository?.owner.login,  let repoName = repository?.name  {
+        if let owner = repository?.owner?.login,  let repoName = repository?.name  {
             readmeResource = APIService.getReadmeRepository(owner: owner, repositoryName: repoName)
         }
         
@@ -87,9 +87,9 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver, UIGe
     
     private func showRepository() {
         
-        avatar.imageURL = repository?.owner.avatarUrl
+        avatar.imageURL = repository?.owner?.avatarUrl
         projectName.text = repository?.name
-        owner.text = repository?.owner.login
+        owner.text = repository?.owner?.login
         repoDescription.text = repository?.descriptionRepo
         
         if let stars = repository?.stargazersCount {
@@ -166,7 +166,7 @@ class RepositoryDetailedViewController: UIViewController, ResourceObserver, UIGe
         } else if segue.identifier == "show_repo_user_detail" {
             if let repoUserDetail = segue.destination as? RepoUserViewController {
                 
-                repoUserDetail.usernameForUrl = repository?.owner.login
+                repoUserDetail.usernameForUrl = repository?.owner?.login
             }
         }
     }

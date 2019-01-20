@@ -20,25 +20,6 @@ class _APIService {
     
     fileprivate init() {
         
-        #if DEBUG
-        // Bare-bones logging of which network calls Siesta makes:
-        SiestaLog.Category.enabled = .detailed
-        
-        // For more info about how Siesta decides whether to make a network call,
-        // and which state updates it broadcasts to the app:
-        
-        //SiestaLog.Category.enabled = .common
-        
-        // For the gory details of what Siesta’s up to:
-        
-        //SiestaLog.Category.enabled = .detailed
-        
-        // To dump all requests and responses:
-        // (Warning: may cause Xcode console overheating)
-        
-        //SiestaLog.Category.enabled = .all
-        #endif
-        
         let formatter = DateFormatter()
         let jsonDecoder = JSONDecoder()
         
@@ -156,7 +137,7 @@ class _APIService {
     func currentRepoStarred(_ repository: Repository) -> Resource {
         return service
             .resource("/user/starred/")
-            .child(repository.owner.login)
+            .child(repository.owner?.login ?? "")
             .child(repository.name)
         
     }

@@ -11,9 +11,9 @@ struct Repository: Codable {
     let name: String
     let fullName: String
     let privateRepo: Bool
-    let owner: User
+    var owner: User?
     let descriptionRepo: String?
-    let language: String
+    let language: String?
     let stargazersCount: Int?
     let forksCount: Int
     let watchersCount: Int
@@ -37,6 +37,26 @@ struct Repository: Codable {
         case contentsUrl = "contents_url"
         case commitsUrl = "commits_url"
         case url
+    }
+    
+    init(_ repository: RealmRepository) {
+        self.id = repository.id
+        self.fullName = repository.fullName
+        self.name = repository.name
+        if let owner = repository.owner {
+            self.owner = User(owner)
+        }
+        
+        self.privateRepo = repository.privateRepo
+        self.descriptionRepo = repository.descriptionRepo
+        self.language = repository.language
+        self.stargazersCount = repository.stargazersCount
+        self.forksCount = repository.forksCount
+        self.watchersCount = repository.watchersCount
+        self.openIssues = repository.openIssues
+        self.contentsUrl = repository.contentsUrl
+        self.commitsUrl = repository.commitsUrl
+        self.url = repository.url
     }
 }
 

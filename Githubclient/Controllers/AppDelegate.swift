@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         // Override point for customization after application launch.
-        
+        Theme.setColorTheme()
         
         RemoteImageView.defaultImageService.configure {
             $0.useNetworkActivityIndicator()

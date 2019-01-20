@@ -19,6 +19,21 @@ class RepositoryTableController: UITableViewController, ResourceObserver {
     var repositories: [Repository] = [] {
         didSet {
             tableView.reloadData()
+            
+            guard let url_checked = repoListUrl else {
+                
+                return
+            }
+            
+            
+            switch url_checked {
+            case "repos", "subscriptions","starred":
+                RealmService.deleteRepositories(group: url_checked)
+                
+                RealmService.saveRepositories(repositories: repositories, group: url_checked)
+            default:
+                return
+            }
         }
     }
     
@@ -59,9 +74,15 @@ class RepositoryTableController: UITableViewController, ResourceObserver {
             repositoriesResource = APIService.repositoriesSubscription(owner: username_checked)
         case "starred":
             repositoriesResource = APIService.repositoriesStarred(owner: username_checked)
+        case "not_cache_repositories":
+            repositoriesResource = APIService.repositories(owner: username_checked)
+            
         default:
             performSegue(withIdentifier: "show_user_fromrepo", sender: nil)
+            return
         }
+        
+        
         
     }
     
@@ -119,7 +140,7 @@ class RepositoryTableCell: UITableViewCell {
             repoName.text = repository?.name
             language.text = repository?.language
             descriptionRepo.text = repository?.descriptionRepo
-            owner.text = repository?.owner.login
+            owner.text = repository?.owner?.login
             
             if let starsCount = repository?.stargazersCount {
                 stars.text = String(starsCount)
@@ -129,7 +150,7 @@ class RepositoryTableCell: UITableViewCell {
                 forks.text = String(forkCount)
             }
             
-            if let avatarUrl = repository?.owner.avatarUrl {
+            if let avatarUrl = repository?.owner?.avatarUrl {
                 repoOwnerAvatar.imageURL = avatarUrl
             }
         }
